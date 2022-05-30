@@ -1,0 +1,38 @@
+-o format
+      User-defined format.  format is a single argument in the form of a blank-separated or comma-separated list, which
+      offers a way to specify individual output columns.  The recognized keywords are described in the STANDARD FORMAT
+      SPECIFIERS section below.  Headers may be renamed (ps -o pid,ruser=RealUser -o comm=Command) as desired.  If all
+      column headers are empty (ps -o pid= -o comm=) then the header line will not be output.  Column width will increase
+      as needed for wide headers; this may be used to widen up columns such as WCHAN (ps -o pid,wchan=WIDE-WCHAN-COLUMN
+      -o comm).  Explicit width control (ps opid,wchan:42,cmd) is offered too.  The behavior of ps -o pid=X,comm=Y varies
+      with personality; output may be one column named "X,comm=Y" or two columns named "X" and "Y".  Use multiple -o
+      options when in doubt.  Use the PS_FORMAT environment variable to specify a default as desired; DefSysV and DefBSD
+      are macros that may be used to choose the default UNIX or BSD columns.
+
+drs         DRS       data resident set size, the amount of physical memory devoted to other than executable code.
+
+rss         RSS       resident set size, the non-swapped physical memory that a task has used (in kilobytes).  (alias
+                      rssize, rsz).
+
+trs         TRS       text resident set size, the amount of physical memory devoted to executable code.
+
+vsz         VSZ       virtual memory size of the process in KiB (1024-byte units).  Device mappings are currently
+                             excluded; this is subject to change.  (alias vsize).
+
+comm        COMMAND   command name (only the executable name).  Modifications to the command name will not be shown.  A
+                             process marked <defunct> is partly dead, waiting to be fully destroyed by its parent.  The output in
+                             this column may contain spaces.  (alias ucmd, ucomm).  See also the args format keyword, the -f
+                             option, and the c option.
+                             When specified last, this column will extend to the edge of the display.  If ps can not determine
+                             display width, as when output is redirected (piped) into a file or another command, the output width
+                             is undefined (it may be 80, unlimited, determined by the TERM variable, and so on).  The COLUMNS
+                             environment variable or --cols option may be used to exactly determine the width in this case.  The
+                             w or -w option may be also be used to adjust width.
+
+
+Virtual Memory Size (ps VSZ): 9.03 GB
+Virtual Memory From OS (Sys): 8.27 GB
+
+ PID COMMAND                       DRS   RSS  TRS    VSZ
+5668 /tmp/go-build166571081/b001 8821794 260552 661 8822456
+5668 /tmp/go-build166571081/b001 8821794 260552 661 8822456
